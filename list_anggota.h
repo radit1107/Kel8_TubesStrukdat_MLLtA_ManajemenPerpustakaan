@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-struct Peminjaman;
+struct Peminjaman; // forward declaration
 
 struct RelasiAnggota {
     Peminjaman *child;
@@ -16,7 +16,7 @@ struct Anggota {
     string idAnggota;
     string nama;
 
-    RelasiAnggota *relasi;
+    RelasiAnggota *relasi; // LIST RELASI TIPE A
     Anggota *next;
     Anggota *prev;
 };
@@ -28,8 +28,19 @@ struct ListAnggota {
 
 void createList(ListAnggota &L);
 Anggota* alokasiAnggota(string id, string nama);
-void insertLast(ListAnggota &L, Anggota* p);
+
+void insertFirst(ListAnggota &L, Anggota *p);
+void insertLast(ListAnggota &L, Anggota *p);
+
 Anggota* findAnggota(ListAnggota L, string id);
+
+void deleteFirst(ListAnggota &L);
+void deleteLast(ListAnggota &L);
+void deleteByID(ListAnggota &L, string id);
+
 void printInfo(ListAnggota L);
+
+void tambahRelasi(Anggota *A, Peminjaman *P);
+void printRelasiAnggota(Anggota *A);
 
 #endif
